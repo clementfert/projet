@@ -1,7 +1,10 @@
 
 body {
     font-family: 'Roboto', regular;
+    color:#efefef;
     text-align: center;
+    background-color:#100f0f;
+
 }
 container {
  
@@ -11,5 +14,6 @@ container {
     padding-left: var(--bs-gutter-x,.75rem);
     margin-right: auto;
     margin-left: auto;
-  
+    background-color:#100f0f;
+    color:#efefef;
 }

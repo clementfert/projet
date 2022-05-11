@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from bitcoin import recherche
+from bitcoin import recherche,connexion
 
 
 #from requests import request
@@ -9,7 +9,10 @@ app = Flask(__name__)
 
 @app.route('/')	
 def add():
- return  render_template('add.html')
+    connexion()
+    from bitcoin import tableau,tableau_prix
+    if tableau != 0: 
+        return render_template('add.html',len = len(tableau),  tableau = tableau, tableau_prix = tableau_prix )
 
 
 
@@ -31,11 +34,11 @@ def login():
     if  quantity == float(quantity):
 
        recherche()
-       from bitcoin import info, prix_total
+       from bitcoin import info, prix_total, tableau
        while info == False: 
          return render_template('add.html') 
        if info == True:
-         return render_template('add_final.html', prix_total = prix_total, quantity = quantity, crypto_selectionner = crypto_selectionner)
+         return render_template('add_final.html', prix_total = prix_total, quantity = quantity, crypto_selectionner = crypto_selectionner, tableau = tableau )
 
     else:
         return render_template('add.html')
