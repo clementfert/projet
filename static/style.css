@@ -1,7 +1,8 @@
 
 body {
     font-family: 'Roboto', regular;
-    color:#efefef;
+    /*color:#efefef;*/
+    color: crimson;
     text-align: center;
     background-color:#100f0f;
 
@@ -15,5 +16,6 @@ container {
     margin-right: auto;
     margin-left: auto;
     background-color:#100f0f;
-    color:#efefef;
+    /*color:#efefef;*/
+    color: crimson;
 }
