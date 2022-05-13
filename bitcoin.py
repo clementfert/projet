@@ -1,6 +1,4 @@
 
-
-
 def recherche():
   import apikey
   from flask import render_template

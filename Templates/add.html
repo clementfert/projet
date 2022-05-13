@@ -21,28 +21,24 @@
           
           <form action="{{ url_for('login') }}" method="POST" mb-3>
                   <div class="row mb-3">
-                  <label for="crypto_selectionner"  >Select Crypto</label> 
+                    <label for="crypto_selectionner"  >Select Crypto</label> 
                  
-                  <select name="crypto_selectionner" data-live-search="true" id="crypto_selectionner" class="form-control" title="Select Car Brand" onchange="test()" required> 
-                    <option value="">choose one</option>   
-                    {%for i in range(0, len)%} 
-
-                  <option value="{{ tableau[i] }}">{{ tableau[i] }} </option>   
-
-                  {% endfor %}
-                  </select>
-                  
+                    <select name="crypto_selectionner" data-live-search="true" id="crypto_selectionner" class="form-control" title="Select Car Brand" onchange="test()" required> 
+                      <option value="">choose one</option>   
+                      {%for i in range(0, len)%} 
+                        <option value="{{ tableau[i] }}">{{ tableau[i] }} </option>   
+                     {% endfor %}
+                   </select>
                   </div>
 
                   <div class="row mb-3">
-                  <label for="quantity" ></label> 
-                  <input type="number" min="0" step="0.000001" name="quantity" id="quantity" required>Quantité<br>
+                    <label for="quantity" ></label> 
+                    <input type="number" min="0" step="0.000001" name="quantity" id="quantity" required>Quantité<br>
                   </div>
 
-                  <div class="row card mb-3">
-                    <div class="card-body" id="show_price">
-                      
-                    </div>
+                  <div class="row mb-3">
+                    <label for="disabledTextInput" class="form-label">Disabled input</label>
+                    <input type="number" min="0" step="0.000001" id="show_price" class="form-control" placeholder="Disabled input" name="show_price" value="show_price" readonly>
                   </div>
                   
                   <input type="submit" value="ajouter">

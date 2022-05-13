@@ -19,6 +19,17 @@
           <a href="graph.html"> jhkjh</button>
       </div>
 
+
+
+
+      <ul id="list">
+        {% for i in collection %}
+            <li>Ville: {{ i.name  }} || Pays: {{ i.somme }}</li>
+    </ul>
+    {% endfor %}
+
+
+
       <ul class="list-group">
         <li class="list-group-item">An item</li>
         <li class="list-group-item">A second item</li>
