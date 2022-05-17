@@ -1,8 +1,7 @@
 
 body {
     font-family: 'Roboto', regular;
-    /*color:#efefef;*/
-    color: crimson;
+    color:#efefef;
     text-align: center;
     background-color:#100f0f;
 
@@ -17,5 +16,52 @@ container {
     margin-left: auto;
     background-color:#100f0f;
     /*color:#efefef;*/
-    color: crimson;
+  
 }
+/* pour menu*/
+.img-fluid {
+    width: 100%;
+    height: 50%;
+}
+.contenant {
+    position: relative;
+    text-align: center;
+    color:#efefef;
+  }
+  
+  .texte_centrer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+/*fin cssmenu*/
+
+
+
+/* add.htlm*/
+.list-group-item {
+    background-color:#100f0f;
+    color: #efefef;
+
+}
+a{
+    color: #efefef;
+    text-decoration:none;
+}
+.form-control {
+    background-color:#100f0f;
+    color: #efefef;
+}
+select{
+    background-color:#100f0f;
+    color: #efefef;
+}
+option {
+    background-color: #100f0f;
+    color: #efefef;
+}
+
+
+/*fin add.html*/

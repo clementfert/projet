@@ -53,6 +53,7 @@ def recherche():
     prix_total = 0
     return info
 
+
 def connexion():
   import apikey
   from flask import render_template
