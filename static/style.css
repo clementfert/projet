@@ -63,5 +63,10 @@ option {
     color: #efefef;
 }
 
+input#quantity {
+    background-color: #100f0f;
+    color: white;
+}
+
 
 /*fin add.html*/

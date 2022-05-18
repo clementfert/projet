@@ -1,4 +1,7 @@
 
+from time import time
+
+
 def recherche():
   import apikey
   from flask import render_template
@@ -89,5 +92,27 @@ def connexion():
   return tableau, tableau_prix
 
 
-     
+def test_data_graphique():
+  import apikey
+  import requests
+
+  headers = {
+    'Accepts': 'application/json',
+    'X-CMC_PRO_API_KEY': apikey.key,
+  }
+  params ={
+    'symbol':'BTC',
+    'interval':"daily"
+  }
+  url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/historical'
+  json = requests.get(url,params=params,headers=headers).json()
+
+  coins = json['data']
+  tableau_evolution = [] 
+  for x in coins:
+    tableau_evolution.append(x['quotes']['quote']['USD']['open'])
+  print(tableau_evolution)
+  return tableau_evolution
+
+
 

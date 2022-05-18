@@ -12,8 +12,10 @@
         <div class="container-fluid">
           <a class="navbar-brand">Crypto Tracker</a>
           <form class="d-flex" action="{{ url_for('add') }}" method="POST">
-            <button class="btn btn-outline-success" type="submit">remove</button>
             <button class="btn btn-outline-success" type="submit">add</button>
+          </form>
+          <form class="d-flex" action="{{ url_for('remove') }}" method="POST">
+            <button class="btn btn-outline-success" type="submit">remove</button>
           </form>
         </div>
       </nav>
@@ -21,7 +23,7 @@
       <div class="contenant">
         <img src="{{ url_for('static', filename='image.jpg') }}"class="img-fluid"  position="center" >
         <div class="texte_centrer">
-          <a href="graph.html"> {{ wallet }}</button>
+         <h1><a href="graph.html"> {{ wallet }}</button></h1>
         </div>
         
       </div>
@@ -31,7 +33,7 @@
 
         <ul class="list-group">
           {%for i in range(0, len)%} 
-          <li class="list-group-item">{{ tableau_menu_name[i]}}  {{ tableau_menu_somme[i] }}</li>
+          <li class="list-group-item">{{ tableau_menu_name[i]}}  {{ tableau_menu_somme[i] }}  {{tableau_gain[i]}}</li>
           {% endfor %}
         </ul>
           
