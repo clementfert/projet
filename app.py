@@ -1,14 +1,18 @@
-
 from pipes import Template
-import string
-from tkinter import E
+#import string
+import io
+import base64
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+import seaborn as sns
+#from tkinter import E
 from bson import ObjectId
-from flask import Flask, redirect, render_template, request, url_for
+from flask import Flask, redirect, render_template, request, url_for,send_file
 import flask_pymongo
-from bitcoin import recherche,connexion,test_data_graphique
+import matplotlib.pyplot as plt
+from bitcoin import recherche,connexion
 import json
-connexion()
-test_data_graphique()
+
+
 global db, collection, gain, deficit, wallet
 
 
@@ -75,6 +79,32 @@ def menu():
     
     wallet= sum(tableau_gain)
 
+
+    from  datetime import date, time, datetime
+    global tableau_y_graphe
+    global tableau_date
+    tableau_y_graphe = []
+    tableau_date = [] 
+    db = client.dbtestmongo
+    collection = db.get_collection("graphique")
+    eduardito=collection.find({})
+    for  x in eduardito:
+            print(x['date'],x['y_graphe'])
+            tableau_date.append(x['date'])
+            tableau_y_graphe.append(x['y_graphe'])
+    
+    aujourdhui = date.today()
+    aujourdhui = aujourdhui.strftime('%d/%m/%y')
+    
+    if aujourdhui != tableau_date[-1]:
+        # on envoie les donnés à la base de donné mongodb 
+            db = client.dbtestmongo
+            collection = db.get_collection("graphique")
+            mydict = { "date": aujourdhui,"y_graphe": wallet }
+            collection.insert_one(mydict)
+        
+  
+
     return render_template('menu.html',tableau_menu_name=tableau_menu_name, tableau_menu_somme=tableau_menu_somme, len = len(tableau_menu_name), wallet=wallet,tableau_gain=tableau_gain)
 
 
@@ -124,6 +154,24 @@ def remove_data():
     collection.delete_one({ "_id" : ObjectId(id) })
     return redirect('/')
 
+
+
+@app.route('/page_graphique', methods=['GET','POST'])
+def page_graphique():
+    return render_template('graphique.html')    
+
+@app.route('/graphique', methods=['GET','POST'])
+def graphique():
+    fig,ax= plt.subplots(figsize=(6,6))
+    ax=sns.set_style(style="darkgrid")
+    x=tableau_date
+    y=tableau_y_graphe
+    sns.lineplot(x,y)
+    canvas=FigureCanvas(fig)
+    img=io.BytesIO()
+    fig.savefig(img)
+    img.seek(0)
+    return  send_file(img,mimetype='img/png')
 
 
 
