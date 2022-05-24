@@ -8,9 +8,9 @@
       </head>
     <body>
         
-      <div class="container">
+      
 
-        <nav class="navbar navbar-light bg-light row mb-3">
+        <nav class="navbar navbar-dark fixed-top bg-dark">
           <div class="container">
             <a class="navbar-brand" href="#">
               
@@ -18,7 +18,7 @@
           </div>
         </nav>
 
-          
+        <div class="container">    
           <form action="{{ url_for('remove_data') }}" method="POST" mb-3>
                   <div class="row mb-3">
                     <label for="crypto_selectionner"></label> 
@@ -38,7 +38,7 @@
                   </div>
                   
                   <input type="submit" value="supprimer">
-                </form>
+           </form>
 
      </div>  
 

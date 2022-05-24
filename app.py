@@ -1,15 +1,13 @@
 from pipes import Template
-#import string
 import io
 import base64
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 import seaborn as sns
-#from tkinter import E
 from bson import ObjectId
 from flask import Flask, redirect, render_template, request, url_for,send_file
 import flask_pymongo
 import matplotlib.pyplot as plt
-from bitcoin import recherche,connexion
+from bitcoin import connexion
 import json
 
 
@@ -17,7 +15,10 @@ global db, collection, gain, deficit, wallet
 
 
 
+
 app = Flask(__name__)
+
+
 client = flask_pymongo.MongoClient("mongodb+srv://clement_fert:studi2022@cluster0.99oev.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
 
 @app.route('/')
@@ -41,7 +42,7 @@ def menu():
     global tableau_gain
     tableau_gain=[]
 
-  # lecture de notre database mongoDB
+# lecture de notre database mongoDB
     db = client.dbtestmongo
     collection = db.get_collection("crypto")
     eduardito=collection.find({})
@@ -54,10 +55,10 @@ def menu():
         tableau_id.append(x['_id'])
         
 
- #connexion à l'API 
+#connexion à l'API 
     connexion()
     from bitcoin import tableau,tableau_prix
- 
+
     gain=0
     gain_total=0
     deficit=0
@@ -72,13 +73,12 @@ def menu():
                 print(u)
                 print(x)
                 if x==e:
-                   gain= tableau_prix[u]-tableau_menu_prix_unitair[i]
-                   tableau_gain.append(gain)
+                    gain= tableau_prix[u]-tableau_menu_prix_unitair[i]
+                    tableau_gain.append(gain)
                 else:
                     print("suivant")
     
     wallet= sum(tableau_gain)
-
 
     from  datetime import date, time, datetime
     global tableau_y_graphe
@@ -102,9 +102,9 @@ def menu():
             collection = db.get_collection("graphique")
             mydict = { "date": aujourdhui,"y_graphe": wallet }
             collection.insert_one(mydict)
+            tableau_y_graphe.append(wallet)
+            tableau_date.append(aujourdhui)
         
-  
-
     return render_template('menu.html',tableau_menu_name=tableau_menu_name, tableau_menu_somme=tableau_menu_somme, len = len(tableau_menu_name), wallet=wallet,tableau_gain=tableau_gain)
 
 
@@ -173,6 +173,9 @@ def graphique():
     img.seek(0)
     return  send_file(img,mimetype='img/png')
 
+
+
+    
 
 
 
