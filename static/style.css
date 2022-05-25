@@ -1,4 +1,8 @@
+html {
+    height: 100%;
+    width: 100%;
 
+}
 body {
     font-family: 'Roboto', regular;
     color:#efefef;
@@ -18,10 +22,14 @@ body {
     margin-right: auto;
     margin-left: auto;
     background-color:#100f0f;
-    padding: 50px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    /*padding: 50px;*/
     /*color:#efefef;*/
   
 }
+
 
 /* pour menu*/
 
@@ -66,7 +74,7 @@ body {
     height: 70%;
 }
 .li {
-    height: 30%;
+    height: 45%;
 }
 
 .col {
@@ -80,16 +88,19 @@ body {
 
 /* add.htlm*/
 .list-group-item {
-    background-color:#100f0f;
+    background-color: #100f0f;
     color: #efefef;
-    min-height: 10%;
+    min-height: 15%;
+    height: auto;
+    font-size: xx-large;
+    width: auto;
 
 }
 a{
     color: #efefef;
     text-decoration:none;
 }
-.form-control {
+.form-control-lg {
     background-color:#100f0f;
     color: #efefef;
     font-size: xx-large;
@@ -109,6 +120,14 @@ input#quantity {
     color: white;
 }
 
+.row{
+    height: 10vh;
+}
+.btn-group-lg>.btn, .btn-lg {
+    font-size: xxx-large;
+}
 
-
-
+.img-graphe{
+    width: auto;
+    height: auto;
+}
