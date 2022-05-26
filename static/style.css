@@ -81,7 +81,12 @@ body {
     flex: 100%;
     font-size: xx-large;
 }
-
+.space{
+    width: 30%;
+}
+.btn{
+    font-size: xx-large;
+}
 /*fin cssmenu*/
 
 
@@ -131,3 +136,14 @@ input#quantity {
     width: auto;
     height: auto;
 }
+@media screen and (max-width: 600px) {
+    .img-graphe{
+        width:100%;
+    }
+}
+@media screen and (max-height: 635px) {
+    .img-graphe{
+        height:90%;
+    }
+}
+

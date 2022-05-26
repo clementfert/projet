@@ -16,7 +16,7 @@ def connexion():
 
   params = {
     'start':'1',
-    'limit':'5',
+    'limit':'500',
     'convert':'USD'
   }
   url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'
@@ -33,7 +33,6 @@ def connexion():
       tableau.append(x['symbol']) 
       tableau_prix.append(x['quote']['USD']['price'])
     
-  print (tableau)
   return tableau, tableau_prix
 
 
