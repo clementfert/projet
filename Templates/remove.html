@@ -29,7 +29,7 @@
                     <label for="crypto_selectionner"></label> 
                  
                     <select name="crypto_selectionner" data-live-search="true" id="crypto_selectionner" class="form-control-lg" title="Select Car Brand" onchange="show()" required> 
-                      <option value="">choose one</option>   
+                      <option value="">Sélectionner une crypto</option>   
                       {%for i in range(0, len)%} 
                         <option value="{{i}}">{{ tableau_menu_name[i] }} </option>   
                      {% endfor %}
@@ -39,7 +39,7 @@
 
                   <div class="row mb-3">
                     <label for="disabledTextInput" class="form-label"></label>
-                    <input type="number" min="0" step="0.000001" id="show_price" class="form-control-lg" placeholder="Disabled input" name="show_price" value="show_price">
+                    <input type="number" min="0" step="0.000001" id="show_price" class="form-control-lg" placeholder="prix" name="show_price" value="show_price">
                   </div>
 
                   <div class="row mb-3"></div>
