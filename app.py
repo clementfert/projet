@@ -178,6 +178,9 @@ def graphique():
     return  send_file(img,mimetype='img/png')
 
 
+    
+
+
 
     
 
