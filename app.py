@@ -177,7 +177,8 @@ def graphique():
     img.seek(0)
     return  send_file(img,mimetype='img/png')
 
-
+if __name__=="__main__":
+    app.run() 
     
 
 
