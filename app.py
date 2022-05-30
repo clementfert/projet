@@ -166,7 +166,7 @@ def page_graphique():
 #Creation du graphique 
 @app.route('/graphique', methods=['GET','POST'])
 def graphique():
-    fig,ax= plt.subplots(figsize=(6,6))
+    fig,ax= plt.subplots(figsize=(8,8))
     ax=sns.set_style(style="darkgrid")
     x=tableau_date
     y=tableau_y_graphe
