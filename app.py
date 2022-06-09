@@ -10,6 +10,10 @@ import matplotlib.pyplot as plt
 from bitcoin import connexion
 import json
 
+# partie ajouter la variable denvironnement pour la securité de la base de donné 
+from dotenv import load_dotenv
+load_dotenv()
+import os
 
 global db, collection, gain, deficit, wallet
 
@@ -19,7 +23,8 @@ global db, collection, gain, deficit, wallet
 app = Flask(__name__)
 
 # URL de notre DATABASE
-client = flask_pymongo.MongoClient("mongodb+srv://clement_fert:studi2022@cluster0.99oev.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+
+client = flask_pymongo.MongoClient(os.getenv("KEY_DATA_BASE"))
 
 #route menu principal
 @app.route('/')
