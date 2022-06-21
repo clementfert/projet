@@ -75,7 +75,6 @@ kiwisolver==1.4.2
 MarkupSafe==2.1.1
 matplotlib==3.5.2
 mongoengine==0.24.1
-numpy==1.22.3
 outcome==1.1.0
 packaging==21.3
 pandas==1.4.2
