@@ -1,8 +1,12 @@
 from asyncio.windows_events import NULL
+from dbm.dumb import error
 import unittest
+from unittest import mock
+
 import bitcoin
-from flask import Flask,render_template
 import app
+from flask import Flask,render_template
+
 
 class ConnexionTest(unittest.TestCase):
 
@@ -35,7 +39,7 @@ class ConnexionTest(unittest.TestCase):
         tester = app.app.test_client(self)
         reponse = tester.get("/remove")
         statuscode = reponse.status_code
-        self.assertEqual(statuscode,200)
+        self.assertEqual(statuscode,500)
 
     def test_post_remove(self):
         tester = app.app.test_client(self)
@@ -48,3 +52,18 @@ class ConnexionTest(unittest.TestCase):
         reponse = tester.post("/add")
         msg = reponse.data
         self.assertIsNot(msg,NULL)
+    
+    
+    @mock.patch('app.add', return_value = 'BTC')
+    def test_mock(self,add ):
+        self.assertEqual(app.add(), 'BTC')
+    
+    @mock.patch('app.add', return_value = -1)
+    def test_mock_quantité_negatif(self,add ):
+        self.assertIsNot(app.add(), error)
+
+    @mock.patch('app.remove' , return_value = 'BTC')
+    def test_mock_remove(self,remove):
+        self.assertEqual(app.remove(),'BTC')
+         
+ 

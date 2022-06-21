@@ -1,8 +1,8 @@
 import flask_pymongo
 # partie ajouter la variable denvironnement pour la securité de la base de donné 
+import os
 from dotenv import load_dotenv
 load_dotenv()
-import os
 
 def conexion_data_base_crypto ():
     client = flask_pymongo.MongoClient(os.getenv("KEY_DATA_BASE"))
