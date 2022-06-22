@@ -100,7 +100,7 @@ def graphique():
     return  send_file(img,mimetype='img/png')
 
 if __name__=="__main__":
-    app.run() 
+    app.run(debug=True) 
     
 
 
